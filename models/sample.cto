@@ -3,7 +3,7 @@ namespace org.acme.mynetwork
 asset DonateData identified by donateId {
     o String donateId
     o Integer money
-    o Integer usedMoney
+    o Integer usedMoney=0
     --> Donator donator
     --> Campaign campaign
 }
