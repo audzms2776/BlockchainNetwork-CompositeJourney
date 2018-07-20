@@ -4,7 +4,6 @@ asset DonateData identified by donateId {
     o String donateId
     o Integer money
     o Integer usedMoney
-    // o DateTime dateTime
     --> Donator donator
     --> Campaign campaign
 }
@@ -22,7 +21,6 @@ participant Donator identified by donatorId {
 transaction Donate {
     o Integer donateMoney
     o String donateId
-    // o DateTime dateTime
     --> Donator donator
     --> Campaign campaign
 }
