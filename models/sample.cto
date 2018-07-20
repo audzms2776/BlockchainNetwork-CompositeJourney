@@ -10,12 +10,12 @@ asset DonateData identified by donateId {
 }
 
 participant Campaign identified by campaignId {
-    o Integer campaignId
+    o String campaignId
     o String title
 }
 
 participant Donator identified by donatorId {
-    o Integer donatorId
+    o String donatorId
     o String name
 }
 
