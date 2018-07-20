@@ -1,18 +1,31 @@
 namespace org.acme.mynetwork
 
-asset Commodity identified by tradingSymbol {
-    o String tradingSymbol
-    o String description
-    o String mainExchange
-    o Double quantity
-    --> Trader owner
+asset DonateData identified by tradingSymbol {
+    o Integer money
+    o Integer usedMoney
+    // o DateTime dateTime
+    --> Donator donator
+    --> Campaign campaign
 }
-participant Trader identified by tradeId {
-    o String tradeId
-    o String firstName
-    o String lastName
+
+participant Campaign identified by campaignId {
+    o Integer campaignId
+    o String title
 }
-transaction Trade {
-    --> Commodity commodity
-    --> Trader newOwner
+
+participant Donator identified by donatorId {
+    o Integer donatorId
+    o String name
+}
+
+transaction Donate {
+    o Integer donateMoney
+    // o DateTime dateTime
+    --> Donator donator
+    --> Campaign campaign
+}
+
+transaction UseMoney {
+    o Integer money 
+    --> DonateData donateData
 }
