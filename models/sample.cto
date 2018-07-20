@@ -21,6 +21,7 @@ participant Donator identified by donatorId {
 
 transaction Donate {
     o Integer donateMoney
+    o String donateId
     // o DateTime dateTime
     --> Donator donator
     --> Campaign campaign
