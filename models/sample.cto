@@ -1,7 +1,5 @@
-/**
- * My commodity trading network
- */
 namespace org.acme.mynetwork
+
 asset Commodity identified by tradingSymbol {
     o String tradingSymbol
     o String description
