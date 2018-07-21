@@ -3,9 +3,15 @@ namespace org.acme.mynetwork
 asset DonateData identified by donateId {
     o String donateId
     o Integer money
-    o Integer usedMoney=0
     --> Donator donator
     --> Campaign campaign
+    --> MoneyUsage[] usages
+}
+
+asset MoneyUsage identified by usageId{
+    o String usageId
+    o Integer money
+    o String detail
 }
 
 participant Campaign identified by campaignId {
