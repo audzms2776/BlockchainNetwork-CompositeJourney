@@ -25,6 +25,12 @@ participant Donator identified by donatorId {
     o String name
 }
 
+event DonateEvent {
+    o Integer donateMoney
+    --> Donator donator
+    --> Campaign campaign
+}
+
 transaction Donate {
     o String donateId
     o Integer donateMoney
