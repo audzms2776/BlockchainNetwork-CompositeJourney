@@ -38,16 +38,20 @@ describe('Commodity Trading', () => {
         const adminConnection = new AdminConnection({ fs: bfs_fs });
         return adminConnection.createProfile('defaultProfile', {
             type: 'embedded'
-        }).then(() => {
-            return adminConnection.connect('defaultProfile', 'admin', 'adminpw');
-        }).then(() => {
-            return BusinessNetworkDefinition.fromDirectory(path.resolve(__dirname, '..'));
-        }).then((businessNetworkDefinition) => {
-            return adminConnection.deploy(businessNetworkDefinition);
-        }).then(() => {
-            businessNetworkConnection = new BusinessNetworkConnection({ fs: bfs_fs });
-            return businessNetworkConnection.connect('defaultProfile', 'my-network', 'admin', 'adminpw');
-        });
+        })
+            .then(() => {
+                return adminConnection.connect('defaultProfile', 'admin', 'adminpw');
+            })
+            .then(() => {
+                return BusinessNetworkDefinition.fromDirectory(path.resolve(__dirname, '..'));
+            })
+            .then((businessNetworkDefinition) => {
+                return adminConnection.deploy(businessNetworkDefinition);
+            })
+            .then(() => {
+                businessNetworkConnection = new BusinessNetworkConnection({ fs: bfs_fs });
+                return businessNetworkConnection.connect('defaultProfile', 'my-network', 'admin', 'adminpw');
+            });
     });
 
     describe('#tradeCommodity', () => {
@@ -87,18 +91,23 @@ describe('Commodity Trading', () => {
                     return assetRegistry.add(commodity)
                         .then(() => {
                             return businessNetworkConnection.getParticipantRegistry(NS + '.Trader');
-                        }).then((participantRegistry) => {
+                        })
+                        .then((participantRegistry) => {
                             // add the traders
                             return participantRegistry.addAll([dan, simon]);
-                        }).then(() => {
+                        })
+                        .then(() => {
                             // submit the transaction
                             return businessNetworkConnection.submitTransaction(trade);
-                        }).then(() => {
+                        })
+                        .then(() => {
                             return businessNetworkConnection.getAssetRegistry(NS + '.Commodity');
-                        }).then((assetRegistry) => {
+                        })
+                        .then((assetRegistry) => {
                             // re-get the commodity
                             return assetRegistry.get(commodity.$identifier);
-                        }).then((newCommodity) => {
+                        })
+                        .then((newCommodity) => {
                             // the owner of the commodity should not be simon
                             newCommodity.owner.$identifier.should.equal(simon.$identifier);
                         });

@@ -1,9 +1,9 @@
 {
-  "name": "m-network",
+  "name": "my-network",
   "version": "0.0.1",
   "description": "Sample Trade Network",
   "scripts": {
-    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/m-network.bna",
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/my-network.bna",
     "test": "mocha --recursive"
   },
   "author": "Hyperledger",
